@@ -1,8 +1,9 @@
-import {object} from './constants';
+import Object from "./esSix/Object";
 
 function App() {
   return (
     <>
+    <Object title="hello" price="120"/>
     </>
   );
 }
