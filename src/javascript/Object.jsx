@@ -1,4 +1,4 @@
-import React from 'react';
+// Object Destructuring
 
 function Object() {
   // Define an object with properties id, name, and address

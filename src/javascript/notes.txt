@@ -1,0 +1,14 @@
+https://github.com/pranjalstar/30-Days-React-Course/blob/main/01_Day_JavaScript_Refresher/01_javascript_refresher.md
+
+
+ajax
+promises
+closures
+scoping
+map()
+filter()
+reduce()
+concept of this
+apply call bind
+higher order function
+arrow function
