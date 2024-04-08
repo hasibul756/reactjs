@@ -1,9 +1,9 @@
-import Object from "./esSix/Object";
+import Multiform from "./forms/Multiform";
 
 function App() {
   return (
     <>
-    <Object/>
+    <Multiform/>
     </>
   );
 }

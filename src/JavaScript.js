@@ -1,3 +1,13 @@
+//Hoisting
+
+//Promises
+
+//Scope
+
+//Async/Await
+
+
+
 // String Indices
 
 // let name = 'Hasibul Alam';
@@ -7,3 +17,17 @@
 
 // let name = "Hasibul Alam";
 // console.log(name[0]);
+
+// Loop in Objects.
+
+//Reverse a string
+
+//Convert first letter of a string to uppercase
+
+// remove duplicated from array
+
+//create two dimensional array
+
+// 
+
+
