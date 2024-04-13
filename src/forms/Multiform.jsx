@@ -1,24 +1,48 @@
 import React, { useState } from 'react';
 
 function Multiform() {
-    const [data, setData] = useState({ name: '', email: '', password: '' });
+    const initialState = {
+        name: '',
+        email: '',
+        password: ''
+    };
 
-    function getData(e) {
+    const [data, setData] = useState(initialState);
+
+    function handleChange(e) {
         const { name, value } = e.target;
-        setData((prevData) => ({ ...prevData, [name]: value }));
+        setData(prevData => ({ ...prevData, [name]: value }));
     }
 
-    function submitData(e) {
+    function handleSubmit(e) {
         e.preventDefault();
         console.log(data);
-        setData({ name: '', email: '', password: '' });
+        setData(initialState);
     }
 
     return (
-        <form onSubmit={submitData}>
-            <input type="text" name="name" value={data.name} onChange={getData} />
-            <input type="email" name="email" value={data.email} onChange={getData} />
-            <input type="password" name="password" value={data.password} onChange={getData} />
+        <form onSubmit={handleSubmit}>
+            <input
+                type="text"
+                name="name"
+                value={data.name}
+                onChange={handleChange}
+                placeholder="Name"
+            />
+            <input
+                type="email"
+                name="email"
+                value={data.email}
+                onChange={handleChange}
+                placeholder="Email"
+            />
+            <input
+                type="password"
+                name="password"
+                value={data.password}
+                onChange={handleChange}
+                placeholder="Password"
+            />
             <button type="submit">Submit</button>
         </form>
     );

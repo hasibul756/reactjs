@@ -1,9 +1,9 @@
-import UseState from "./hooks/UseState";
+import Multiform from "./forms/Multiform";
 
 function App() {
   return (
     <>
-    <UseState/>
+    <Multiform/>
     </>
   );
 }
