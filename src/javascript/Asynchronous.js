@@ -92,3 +92,73 @@ and doesn't block the flow. */
 // Promises
 // Promise is for 'eventual' completion of task. It is an object is JS.
 // It is a solution to callback HTMLElement.
+
+// let promise = new Promise((resolve,reject)=>{
+//     console.log('I am a promise');
+//     resolve('success');
+//     reject('some error');
+// })
+
+//resolve and reject are callbacks provided by js.
+
+// Promise - pending, fulfilled, rejected
+
+// Creating a promise
+// let myPromise = new Promise((resolve, reject) => {
+//     // Simulating an asynchronous operation (e.g., fetching data from a server)
+//     setTimeout(() => {
+//       let success = true;
+//       if (success) {
+//         // If the operation is successful, resolve the promise
+//         resolve("Data retrieved successfully!");
+//       } else {
+//         // If the operation fails, reject the promise
+//         reject("Error: Unable to retrieve data.");
+//       }
+//     }, 2000); // Simulating a delay of 2 seconds
+//   });
+
+// // Using the promise
+// myPromise.then((result) => {
+// // This block executes if the promise is resolved successfully
+// console.log(result); // Output: Data retrieved successfully!
+// }).catch((error) => {
+// // This block executes if the promise is rejected
+// console.log(error); // Output: Error: Unable to retrieve data.
+// });
+
+// Promise Chaining
+
+// Simulated asynchronous functions
+// function fetchData1() {
+//     return new Promise((resolve, reject) => {
+//       setTimeout(() => {
+//         resolve("Data from fetchData1");
+//       }, 1000);
+//     });
+//   }
+  
+//   function fetchData2() {
+//     return new Promise((resolve, reject) => {
+//       setTimeout(() => {
+//         resolve("Data from fetchData2");
+//       }, 1500);
+//     });
+//   }
+  
+//   // Chaining promises
+//   fetchData1()
+//     .then((result1) => {
+//       console.log(result1); // Output: Data from fetchData1
+//       return fetchData2(); // Return a new promise to continue the chain
+//     })
+//     .then((result2) => {
+//       console.log(result2); // Output: Data from fetchData2
+//       console.log("Promise chaining completed.");
+//     })
+//     .catch((error) => {
+//       console.log("Error:", error);
+//     });
+
+
+// Async-Await
