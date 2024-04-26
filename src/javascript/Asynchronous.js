@@ -1,164 +1,140 @@
-// Synchronous
+// Synchronous Programming
 
-/* Synchronous means the code runs in a particular sequence of instructions given in the program.
+/* Synchronous programming means the code runs in a particular sequence of instructions given in the program.
 Each instruction waits for the previous instruction to complete its executions. */
 
-//Asynchronous
+// Example of Synchronous Code
+console.log('one'); // Executes first
+console.log('two'); // Executes second
+console.log('three'); // Executes third
 
-/* Due to synchronous programming, sometimes important instructions get blocked due to some previous
-instructions, which causes a delay in the UI. Asynchronous code execution allows to execute next instructions immediately
-and doesn't block the flow. */
+// Asynchronous Programming
 
-// Synchronous
+/* Asynchronous code execution allows executing the next instructions immediately
+without blocking the flow, which is beneficial for UI responsiveness. */
 
-// console.log('one');
-// console.log('two');
-// console.log('three');
+// Example of Asynchronous Code using setTimeout
+function hello() {
+    console.log("Hello Function");
+}
+setTimeout(hello, 2000); // Executes after 2 seconds asynchronously
 
-// function hello(){
-//     console.log("Hello Function");
-// }
+// Callback Functions
 
-// setTimeout(hello,2000);
+/* Callback functions are functions passed as arguments to other functions and are executed later
+when a certain condition or task is completed. */
 
-// Callback function
+// Example of Callback Function
+function sum(a, b) {
+    console.log(a + b);
+}
 
-// function sum(a,b) {
-//     console.log(a+b);
-// }
+function callback(a, b, sumCallback) {
+    sumCallback(a, b);
+}
 
-// function callback(a,b,sumCallback){
-//  sumCallback(a,b)
-// }
-
-// callback(1,2,sum)
-
-// const hello = () => {
-//     console.log('Hello World');
-// }
-
-// setTimeout(hello,3000);
+callback(1, 2, sum); // Outputs: 3
 
 // Callback Hell
-// Callback Hell: Nested callbacks stacked below one another forming a pyramid structuredClone.apply
 
-//nesting:
-//loop
+/* Callback Hell refers to nested callbacks stacked below one another,
+forming a pyramid structure which can be hard to manage. */
 
-// let age  = 19;
+// Example of Callback Hell
+function getData(id, nextId) {
+    setTimeout(() => {
+        console.log(id);
+        if (nextId) {
+            nextId();
+        }
+    }, 2000);
+}
 
-// if(age>18) {
-//     if(age>=60){
-//         console.log('senior');
-//     } else {
-//         console.log('adult');
-//     }
-// } else {
-//     console.log("child");
-// }
-
-// for(let i=0;i<5;i++) {
-//     let str ='';
-//     for(let j=0;j<5;j++) {
-//         str+=j
-//         console.log(str);
-//     }
-// }
-
-
-// function getData(id) {
-//     console.log(id);
-// }
-
-//Callback Hell Example (Forming a pyramid structure)
-
-// function getData(id, nextId) {
-//     setTimeout(() => {
-//         console.log(id);
-//         if (nextId) {
-//             nextId();
-//         }
-//     }, 2000);
-// }
-
-// getData(1, () => {
-//      getData(2, ()=> {
-//     getData(3,()=>{
-//         getData(4)
-//     })
-// });
-// });
+// Nested Callbacks forming a pyramid structure
+getData(1, () => {
+    getData(2, () => {
+        getData(3, () => {
+            getData(4);
+        });
+    });
+});
 
 // Promises
-// Promise is for 'eventual' completion of task. It is an object is JS.
-// It is a solution to callback HTMLElement.
 
-// let promise = new Promise((resolve,reject)=>{
-//     console.log('I am a promise');
-//     resolve('success');
-//     reject('some error');
-// })
+/* Promises represent the eventual completion or failure of an asynchronous operation.
+They provide a cleaner way to handle asynchronous tasks compared to callbacks.
+With 3 states: pending, resolved, rejected */
 
-//resolve and reject are callbacks provided by js.
+// Example of Creating and Using a Promise
+let myPromise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        let success = true;
+        if (success) {
+            resolve("Data retrieved successfully!");
+        } else {
+            reject("Error: Unable to retrieve data.");
+        }
+    }, 2000);
+});
 
-// Promise - pending, fulfilled, rejected
-
-// Creating a promise
-// let myPromise = new Promise((resolve, reject) => {
-//     // Simulating an asynchronous operation (e.g., fetching data from a server)
-//     setTimeout(() => {
-//       let success = true;
-//       if (success) {
-//         // If the operation is successful, resolve the promise
-//         resolve("Data retrieved successfully!");
-//       } else {
-//         // If the operation fails, reject the promise
-//         reject("Error: Unable to retrieve data.");
-//       }
-//     }, 2000); // Simulating a delay of 2 seconds
-//   });
-
-// // Using the promise
-// myPromise.then((result) => {
-// // This block executes if the promise is resolved successfully
-// console.log(result); // Output: Data retrieved successfully!
-// }).catch((error) => {
-// // This block executes if the promise is rejected
-// console.log(error); // Output: Error: Unable to retrieve data.
-// });
+// Using the Promise
+myPromise.then((result) => {
+    console.log(result); // Outputs: Data retrieved successfully!
+}).catch((error) => {
+    console.log(error); // Outputs: Error: Unable to retrieve data.
+});
 
 // Promise Chaining
 
-// Simulated asynchronous functions
-// function fetchData1() {
-//     return new Promise((resolve, reject) => {
-//       setTimeout(() => {
-//         resolve("Data from fetchData1");
-//       }, 1000);
-//     });
-//   }
-  
-//   function fetchData2() {
-//     return new Promise((resolve, reject) => {
-//       setTimeout(() => {
-//         resolve("Data from fetchData2");
-//       }, 1500);
-//     });
-//   }
-  
-//   // Chaining promises
-//   fetchData1()
-//     .then((result1) => {
-//       console.log(result1); // Output: Data from fetchData1
-//       return fetchData2(); // Return a new promise to continue the chain
-//     })
-//     .then((result2) => {
-//       console.log(result2); // Output: Data from fetchData2
-//       console.log("Promise chaining completed.");
-//     })
-//     .catch((error) => {
-//       console.log("Error:", error);
-//     });
+/* Promise chaining allows sequential execution of asynchronous tasks,
+making code more readable and manageable. */
 
+// Example of Promise Chaining
+fetchData1()
+    .then((result1) => {
+        console.log(result1); // Output: Data from fetchData1
+        return fetchData2(); // Return a new promise to continue the chain
+    })
+    .then((result2) => {
+        console.log(result2); // Output: Data from fetchData2
+        console.log("Promise chaining completed.");
+    })
+    .catch((error) => {
+        console.log("Error:", error);
+    });
 
 // Async-Await
+
+/* Async-await is a syntactic sugar over promises, making asynchronous code
+look synchronous, easier to read, write, and maintain. */
+
+// Example of Async-Await
+async function fetchData() {
+    try {
+        const result = await myPromise;
+        console.log(result);
+    } catch (error) {
+        console.log(error);
+    } finally {
+        console.log("Cleanup and final actions here...");
+    }
+}
+
+fetchData(); // Outputs: Data retrieved successfully!, Async function execution complete.
+
+// IIFE (Immediately Invoked Function Expression)
+
+/* IIFE is a JavaScript function that runs as soon as it is defined,
+helpful for creating encapsulated code and avoiding variable scope issues. */
+
+// Example of IIFE with Async Function
+(async () => {
+    try {
+        const result = await myPromise;
+        console.log(result);
+    } catch (error) {
+        console.log(error);
+    } finally {
+        console.log("IIFE execution complete.");
+    }
+})();
