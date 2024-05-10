@@ -111,6 +111,22 @@
 //   boundGreet('Hello');
 
 
+// 1. call method:
+// Executes the function immediately.
+// Allows you to specify the context (the value of this) explicitly.
+// Parameters are passed in directly after the context argument.
+
+
+// 2. apply method:
+// Executes the function immediately.
+// Allows you to specify the context (the value of this) explicitly.
+// Accepts arguments as an array or an array-like object.
+
+// 3. bind method:
+// Returns a new function with the specified context (the value of this).
+// Does not execute the function immediately.
+// Allows you to curry the function by pre-filling some arguments.
+// The returned function can be executed later on.
 
 // In Details Explaination with Example:
 
@@ -176,3 +192,88 @@
 //   person.fullName.apply(person1, ["Oslo", "Norway"]);
 
 // bind():--
+// The bind() method creates a new function that, when called, has its this keyword set to the provided value,
+// with a given sequence of arguments preceding any provided when the new function is called.
+// It essentially creates a new function with a fixed this value.
+// The syntax is function.bind(thisArg, arg1, arg2, ...).Example:
+
+
+//***** Interview Questions:-- *****
+
+// Q1) Give Example of each methods:
+// call():--
+// const obj = {
+//     name: "Sahil"
+// }
+
+// function sayHello(note) {
+//     return "Hello " + this.name + " " + note;
+// }
+
+// console.log(sayHello.call(obj,"How are You?"));
+
+// apply():--
+
+// const obj = {
+//     name: "Sahil"
+// }
+
+// function sayHello(age,designation) {
+//     return `${this.name}, ${age}, ${designation}`;
+// }
+
+// console.log(sayHello.apply(obj,[24,"Dev"]));
+
+// bind():--
+
+// const obj = {
+//     name: "Sahil"
+// }
+
+// function sayHello(age,designation) {
+//     return `${this.name}, ${age}, ${designation}`;
+// }
+
+// const bindFunction = sayHello.bind(obj);
+
+// reusability
+// console.log(bindFunction());
+// console.log(bindFunction(24, "dev"));
+// console.log(bindFunction(25, "intern"));
+
+
+// use Call, Apply, Bind in JavaScript (Explicit Binding)
+
+// Q2) Guess the Output:
+// const person = {
+//     name: 'Sahil'
+// }
+
+// function sayHello(age) {
+//     return  `${this.name} is ${age}`
+// }
+
+// console.log(sayHello.call(person, 24)); //this will execute instantly
+// console.log(sayHello.bind(person, 24)); // this will returns a new function that can be utilised later on.
+
+// Q3) Call with Function inside Object
+
+// const obj = {
+//     name: 'Sahil',
+//     age: 24,
+//     getData: function (param) {
+//         return `${this.name}, ${this.age}, ${param}`
+//     }
+// }
+
+// const obj2 = {
+//     name: 'Hasibul',
+//     age: 26
+// }
+
+// console.log(obj.getData("This is Normal Function Call"));
+// console.log(obj.getData.call(obj2, "This is the Call"));
+// console.log(obj.getData.apply(obj2,["This is the Apply"]));
+// console.log(obj.getData.bind(obj2)()); // Empty () Executes the function immediately.
+
+// Q4)
