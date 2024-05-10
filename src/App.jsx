@@ -1,11 +1,9 @@
-import Multiform from "./forms/Multiform";
+
 
 function App() {
   return (
-    <>
-    <Multiform/>
-    </>
-  );
+    <div>App</div>
+  )
 }
 
 export default App
