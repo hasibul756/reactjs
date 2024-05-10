@@ -276,4 +276,57 @@
 // console.log(obj.getData.apply(obj2,["This is the Apply"]));
 // console.log(obj.getData.bind(obj2)()); // Empty () Executes the function immediately.
 
-// Q4)
+// Q4) Call printAnimals such that it prints all animals in object
+
+// const animals = [
+//     {species: "Lion", name: "King"},
+//     {species: "Tiger", name: "Queen"},
+// ];
+
+// function printAnimals(i) {
+//     this.print = function () {
+//         console.log("#" + i + " " + this.species + ": " + this.name);
+//     };
+//     this.print();
+// }
+
+// for (let i = 0; i < animals.length; i++) {
+//     printAnimals.call(animals[i], i);
+// }
+
+// Q5) Partial application for login function
+
+// function checkPassword(ok,fail) {
+//     let password = prompt("Password?", "");
+//     if(password == "test") ok();
+//     else fail();
+// }
+
+// let user = {
+//     name: "Sahil",
+//     login(result) {
+//         console.log(this.name + (result ? " login successful" : " login failed"));
+//     },
+// };
+
+// checkPassword(user.login.bind(user, true), user.login.bind(user, false));
+
+// Q6) Explicit Binding with Arrow Functions
+
+// const age = 20;
+
+// var person = {
+//     name: "Piyush",
+//     age: 20,
+//     getAgeArrow: () => console.log(this),
+//     getAge: function () {
+//         console.log(this.age);
+//     }
+// }
+
+// var person2 = { age: 24};
+
+// person.getAgeArrow.call(person2); //Points to window object
+// person.getAge.call(person2);
+
+ 
