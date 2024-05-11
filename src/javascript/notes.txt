@@ -12,3 +12,6 @@ concept of this
 apply call bind
 higher order function
 arrow function
+
+higher order function
+map,filter,reduce
