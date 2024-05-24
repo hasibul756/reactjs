@@ -141,3 +141,87 @@
 // const filledArray = arrayWithHoles.map(item => item ?? 'default');
 
 // Reduce Method:--
+// Syntax:
+
+// const numbers = [1, 2, 3, 4, 5];
+
+// // The reduce method
+// const sum = numbers.reduce(
+//   // The callback function that processes each array element
+//   (accumulator, currentValue, index, array) => {
+//     // Add the current value to the accumulated result
+//     return accumulator + currentValue;
+//   },
+//   // The initial value for the accumulator
+//   0
+// );
+
+// // Output the result
+// console.log(sum); // Output: 15
+
+// Parameters:
+// * accumulator: Holds the accumulated result. Starts with an initial value initialValue (0 in this case).
+// * currentValue: The current element in the array being processed.
+// * index (optional): The current index of the element being processed.
+// * array (optional): The array reduce was called upon.
+
+// Body:
+// * Adds currentValue to accumulator.
+// * Returns the new value of accumulator to be used in the next iteration.
+
+// Initial Value: The initial value for accumulator. Always start with an initial value to avoid problems.
+// If not provided, the first element of the array is used as the initial accumulator value, and the callback function starts with the second element.
+
+// What is the Accumulator?
+// The accumulator is like a basket that you use to collect and combine all the elements of an array into a single result.
+// As the reduce method iterates through the array, it continuously updates the accumulator with each element processed.
+
+// In each iteration, the callback function updates the accumulator based on the current element (currentValue).
+// The accumulator retains its updated value across iterations, accumulating the result.
+// The final value of the accumulator after the last iteration becomes the result of the reduce method.
+
+// How Reduce Function Works:
+
+// const numbers = [1, 2, 3];
+
+// const sum = numbers.reduce((accumulator, currentValue) => {
+//   return accumulator + currentValue;
+// }, 0);
+
+// console.log(sum); // Output: 6
+
+// 1. Initial Call:
+
+// accumulator: 0 (initial value)
+// currentValue: 1 (first element of the array)
+// Operation: accumulator + currentValue => 0 + 1 = 1
+// Updated accumulator: 1
+
+// 2. Second Iteration:
+
+// accumulator: 1
+// currentValue: 2
+// Operation: 1 + 2 = 3
+// Updated accumulator: 3
+
+// 3. Third Iteration:
+
+// accumulator: 3
+// currentValue: 3
+// Operation: 3 + 3 = 6
+// Updated accumulator: 6
+
+// Final Result: 6
+
+// Eg:--
+
+// const arr1 = [1,2,3];
+
+// const initialValue = 0;
+
+// const myTotal = arr1.reduce((acc,curVal)=>{
+//     console.log(`acc: ${acc} and curVal: ${curVal}`);
+//     return acc+curVal;
+// },initialValue);
+
+// console.log(`Final Value: ${myTotal}`);
