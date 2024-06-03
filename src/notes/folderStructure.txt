@@ -1,0 +1,24 @@
+node_modules:
+This is the folder which contains all the necessary libraries & dependencies by React.js
+You can ignore this folder completely.
+
+public:
+this folder contains all static files like images,videos,fonts,etc.
+
+src:
+This folder contains all source files(The source directory where your React Components, JavaScript files and CSS are kept.).
+
+    App.jsx:
+    the main react component that acts acts
+    there is also App.css with it, which contains
+
+    main.jsx:
+    This is the entry point of our react project
+
+.eslintrc.cjs:
+this file includes configuration for EsLint.
+EsLint is a static code analysis tool for identifying problematic patterns found in JavaScript Code.
+If you don't know about it, you can ignore it.
+
+.gitignore:
+This file includes all the files and folders to be ignored by Git.
