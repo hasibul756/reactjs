@@ -1,9 +1,13 @@
+// import Looping from "./notes/Looping";
 
+import Props from "./notes/Props";
 
-function App() {
+const App = () => {
   return (
-    <div>App</div>
-  )
+    <>
+    <Props/>
+    </>
+  );
 }
 
 export default App
