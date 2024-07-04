@@ -1,11 +1,9 @@
-// import Looping from "./notes/Looping";
-
-import Props from "./notes/Props";
+import StyledComponent from "./notes/StyledComponent";
 
 const App = () => {
   return (
     <>
-    <Props/>
+    <StyledComponent/>
     </>
   );
 }
