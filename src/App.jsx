@@ -1,9 +1,9 @@
-import StyledComponent from "./notes/StyledComponent";
+import { EventHandling } from "./notes/EventHandling";
 
 const App = () => {
   return (
     <>
-    <StyledComponent/>
+    <EventHandling/>
     </>
   );
 }
