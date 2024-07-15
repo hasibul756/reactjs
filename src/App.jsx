@@ -1,9 +1,9 @@
-import { EventHandling } from "./notes/EventHandling";
+import EventPropagation from "./notes/EventPropagation";
 
 const App = () => {
   return (
     <>
-    <EventHandling/>
+    <EventPropagation/>
     </>
   );
 }
