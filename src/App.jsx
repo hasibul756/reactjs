@@ -1,11 +1,9 @@
-import {StateinReact, ProperStateinReact, ParentComponent} from "./notes/StatesinReact";
+import UseStateWithObject from "./notes/UseStateWithObject";
 
 const App = () => {
   return (
     <>
-    <StateinReact/>
-    <ProperStateinReact/>
-    <ParentComponent/>
+    <UseStateWithObject/>
     </>
   );
 }

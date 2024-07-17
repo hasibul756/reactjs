@@ -52,7 +52,6 @@ const ProperStateinReact = () => {
         <>
             <h1>{value}</h1> {/* This will display the current state value and update when `value` changes. */}
             <button onClick={handleCount}>UseState Click</button>
-            <button onClick={handleCount}>UseState Click 2</button>
         </>
     );
 }
@@ -60,7 +59,8 @@ const ProperStateinReact = () => {
 // Additional Notes and Explanations:
 // ------------------------------------
 // 1. React State and Re-rendering:
-//    - React components re-render when their state or props change. 
+//    - React components re-render when their state or props change.
+//    - All child component with in the component will also re-rended when their state changes.
 //    - State is a special variable in React that can be used to trigger re-renders when updated.
 //    - To manage state, you can use the useState hook in functional components.
 
@@ -84,8 +84,35 @@ const ProperStateinReact = () => {
 
 import PropTypes from 'prop-types';
 
+// Using the ChildComponent to demonstrate passing state updater function as a reference
+const ParentComponent = () => {
+    const [value, setValue] = useState(0);
+    console.log("Parent Component Re Rendered");
+    return (
+        <>
+            {/* 
+              The ChildComponent is rendered here with 'value' and 'setValue' passed as props.
+              When the state 'value' changes, React re-renders ParentComponent, which in turn re-renders ChildComponent.
+            */}
+            <ChildComponent value={value} setValue={setValue} />
+            
+            {/* 
+              The Sibling component is rendered here.
+              It will also re-render whenever ParentComponent re-renders, even if Sibling itself does not directly use the state 'value'.
+            */}
+            <Sibling />
+            
+            {/* 
+              Because 'value' is a state of ParentComponent, any change to 'value' using 'setValue' will cause ParentComponent to re-render.
+              This re-render will cascade down to its children, causing ChildComponent and Sibling to re-render as well.
+            */}
+        </>
+    );
+}
+
 // Passing setState function as a reference to another component
 const ChildComponent = ({ value, setValue }) => {
+    console.log("Child Component Re Rendered");
     return (
         <>
             <h1>{value}</h1> {/* This will display the current state value and update when `value` changes. */}
@@ -94,13 +121,11 @@ const ChildComponent = ({ value, setValue }) => {
     );
 }
 
-// Using the ChildComponent to demonstrate passing state updater function as a reference
-const ParentComponent = () => {
-    const [value, setValue] = useState(0);
-
+const Sibling = () => {
+    console.log("Sibling Component Re Rendered");
     return (
         <>
-            <ChildComponent value={value} setValue={setValue} />
+            <h1>This is Sibling Component</h1>
         </>
     );
 }
