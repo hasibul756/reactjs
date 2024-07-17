@@ -1,9 +1,11 @@
-import EventPropagation from "./notes/EventPropagation";
+import {StateinReact, ProperStateinReact, ParentComponent} from "./notes/StatesinReact";
 
 const App = () => {
   return (
     <>
-    <EventPropagation/>
+    <StateinReact/>
+    <ProperStateinReact/>
+    <ParentComponent/>
     </>
   );
 }
