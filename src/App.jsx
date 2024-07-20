@@ -1,9 +1,10 @@
-import UseStateWithObject from "./notes/UseStateWithObject";
+
+import {Todo} from "./todolist/Todo";
 
 const App = () => {
   return (
     <>
-    <UseStateWithObject/>
+      <Todo/>
     </>
   );
 }
