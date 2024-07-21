@@ -16,6 +16,14 @@ export const Todo = () => {
         setInputValue(value);
     }
 
+    const getDate = new Date();
+
+    const formattedDate = getDate.toLocaleDateString();
+
+    const formattedTime = getDate.toLocaleTimeString();
+
+    console.log(formattedTime);
+
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -41,6 +49,7 @@ export const Todo = () => {
     <section className="todo-container">
         <header>
             <h1>Todo List</h1>
+            <p>{`${formattedDate} - ${formattedTime}`}</p>
         </header>
         <section className="form-container">
             <form onSubmit={handleSubmit}>
@@ -54,12 +63,14 @@ export const Todo = () => {
                     {task.map((currTask,index)=>(
                         <li key={index} className="todo-item">
                             <span>{currTask}</span>
-                            <button className="todo-check-btn">
-                            <FaRegCheckCircle/>
-                            </button>
-                            <button className="todo-delete-btn">
-                            <MdDeleteForever/>
-                            </button>
+                            <div>
+                                <button className="todo-check-btn">
+                                <FaRegCheckCircle/>
+                                </button>
+                                <button className="todo-delete-btn">
+                                <MdDeleteForever/>
+                                </button>
+                            </div>
                         </li>
                     ))}
                 </ul>
