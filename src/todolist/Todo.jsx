@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 import "./todo.css";
 import { FaRegCheckCircle } from "react-icons/fa";
@@ -11,18 +11,40 @@ export const Todo = () => {
 
     const [task, setTask] = useState([]);
 
+    const [date,setDate] = useState(new Date());
+
     const handleInputs = (event) => {
         const value = event.target.value;
         setInputValue(value);
     }
 
-    const getDate = new Date();
+    const handleClearAll = () => {
+        setTask([]);
+    }
 
-    const formattedDate = getDate.toLocaleDateString();
+    const handleChechTodo = () => {
+        
+    }
+    
+    const handleDeleteTodo = (currTask) => {
+        // console.log(currTask);
+        const deleteTask = task.filter((value)=>value != currTask );
+        setTask(deleteTask);
+    }
 
-    const formattedTime = getDate.toLocaleTimeString();
+    useEffect(()=>{
 
-    console.log(formattedTime);
+        const getDate = setInterval(() => {
+            setDate(new Date());
+        }, 1000);
+
+        return () => clearInterval(getDate);
+
+    },[]);
+
+
+    const formattedDate = date.toLocaleDateString();
+    const formattedTime = date.toLocaleTimeString();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -64,16 +86,17 @@ export const Todo = () => {
                         <li key={index} className="todo-item">
                             <span>{currTask}</span>
                             <div>
-                                <button className="todo-check-btn">
+                                <button className="todo-check-btn" onClick={handleChechTodo}>
                                 <FaRegCheckCircle/>
                                 </button>
-                                <button className="todo-delete-btn">
+                                <button className="todo-delete-btn" onClick={() => handleDeleteTodo(currTask)}>
                                 <MdDeleteForever/>
                                 </button>
                             </div>
                         </li>
                     ))}
                 </ul>
+                <button onClick={handleClearAll}>Clear All</button>
             </section>
         </section>
     </section>
