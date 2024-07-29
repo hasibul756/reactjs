@@ -13,24 +13,42 @@ export const Todo = () => {
 
     const handleSubmit = (inputValue) => {
 
-        if(!inputValue.trim()) { // Check if 'inputValue' is empty or only whitespace.
+        const {id,content,checked} = inputValue;
+
+        if(!content.trim()) { // Check if 'inputValue' is empty or only whitespace.
             return;
         }
 
-        if(task.includes(inputValue)) { // Check if the input value already exists in the 'task' array.
-            return;
-        }
+        // if(task.includes(content)) { // Check if the input value already exists in the 'task' array.
+        //     return;
+        // }
 
-        setTask((prevTask) => [...prevTask, inputValue]);
+        //for object
+        const matchInputs = task.find((currTask)=> currTask.content === content);
+
+        if(matchInputs) { return; }
+
+        // setTask((prevTask) => [...prevTask, {id:id,content:content, checked: checked}]); //if same name we can pass them directly.
+        setTask((prevTask) => [...prevTask, {id, content, checked}]);
         // (prevTask) => [...prevTask, inputValue]: This is an arrow function that takes the previous state (prevTask) as its argument and returns a new array.
         // The new array is created by spreading the previous state array (...prevTask) and adding the new item (inputValue) at the end.
     }
 
-    const handleDeleteTodo = (currTask) => {
-        const deleteTask = task.filter((value)=>value != currTask );
+    const handleDeleteTodo = (value) => {
+        const deleteTask = task.filter((currTask)=>currTask.content != value );
         setTask(deleteTask);
     }
 
+    const handleCheckedTodo = (checked) => {
+        const updatedTask = task.map((currTask) => {
+            if(currTask.content === checked) {
+                return {...currTask, checked:!currTask.checked}
+            } else {
+                return currTask;
+            }
+        })
+        setTask(updatedTask);
+    }
     const handleClearAll = () => {
         setTask([]);
     }
@@ -43,8 +61,8 @@ export const Todo = () => {
             <TodoForm onAddTodo={handleSubmit} />
             <section>
                 <ul className="todo-list">
-                    {task.map((currTask,index)=>{
-                        return <TodoList key={index} data={currTask} onHandleDeleteTodo={handleDeleteTodo} />
+                    {task.map((currTask)=>{
+                        return <TodoList key={currTask.id} data={currTask.content} checked={currTask.checked} onHandleDeleteTodo={handleDeleteTodo} onHandleCheckedTodo = {handleCheckedTodo} />
                     })}
                 </ul>
                 <button onClick={handleClearAll}>Clear All</button>
