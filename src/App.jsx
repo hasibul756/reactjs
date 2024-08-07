@@ -1,10 +1,9 @@
-
-import {Todo} from "./todolist/Todo";
+import Counter from "./counter-app/counter";
 
 const App = () => {
   return (
     <>
-      <Todo/>
+      <Counter/>
     </>
   );
 }
