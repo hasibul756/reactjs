@@ -1,9 +1,9 @@
-import Counter from "./counter-app/counter";
+import RegistrationForm from "./forms/RegistrationForm";
 
 const App = () => {
   return (
     <>
-      <Counter/>
+      <RegistrationForm/>
     </>
   );
 }
