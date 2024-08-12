@@ -1,9 +1,9 @@
-import RegistrationForm from "./forms/RegistrationForm";
+import LoginForm from "./forms/LoginForm";
 
 const App = () => {
   return (
     <>
-      <RegistrationForm/>
+      <LoginForm/>
     </>
   );
 }
