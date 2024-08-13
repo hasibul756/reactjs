@@ -1,9 +1,9 @@
-import LoginForm from "./forms/LoginForm";
+import Counter from "./hooksindepth/UseEffect/Counter";
 
 const App = () => {
   return (
     <>
-      <LoginForm/>
+      <Counter/>
     </>
   );
 }
