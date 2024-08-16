@@ -1,9 +1,9 @@
-import Counter from "./hooksindepth/UseEffect/Counter";
+import FetchApi from "./api/FetchApi";
 
 const App = () => {
   return (
     <>
-      <Counter/>
+      <FetchApi/>
     </>
   );
 }
