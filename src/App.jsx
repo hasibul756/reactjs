@@ -1,9 +1,9 @@
-import FetchApi from "./api/FetchApi";
+import PokemonCard from "./api/PokemonCard";
 
 const App = () => {
   return (
     <>
-      <FetchApi/>
+      <PokemonCard/>
     </>
   );
 }
