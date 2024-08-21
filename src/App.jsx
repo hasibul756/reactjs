@@ -1,9 +1,9 @@
-import PokemonCard from "./api/PokemonCard";
+import PokeCard from "./catchpokemon/PokeCard";
 
 const App = () => {
   return (
     <>
-      <PokemonCard/>
+      <PokeCard/>
     </>
   );
 }

@@ -3,38 +3,3 @@
   margin: 0;
   box-sizing: border-box;
 }
-
-body {
-  font-family: sans-serif;
-  /* display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh; */
-}
-
-
-.main-div {
-  display: inline-block;
-  padding: 50px;
-  background-color: antiquewhite;
-}
-
-.g-div {
-  display: inline-block;
-  padding: 50px;
-  background-color: teal;
-}
-
-.p-div {
-  display: inline-block;
-  padding: 50px;
-  background-color: yellowgreen;
-}
-
-.c-div {
-  display: inline-block;
-  color: #fff;
-  font-size: 20px;
-  padding: 50px;
-  background-color: blue;
-}
