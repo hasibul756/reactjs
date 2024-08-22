@@ -101,9 +101,27 @@
     align-items: center;
     gap: 3.2rem;
   }
+
+  @media (max-width: 1200px) {
+    .cards {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .cards {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .cards {
+      grid-template-columns: 1fr;
+    }
+  }
   
   .pokemon-card {
-    width: 36rem;
+    /* width: 36rem; */
     min-height: 42rem;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
       rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
@@ -202,7 +220,6 @@
     text-align: center;
   }
   
-  /* ///////////////////////////////////////// */
   .short-container {
     width: 65rem;
   
