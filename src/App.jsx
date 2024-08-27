@@ -1,9 +1,9 @@
-import Pokemon from "./catchpokemon/Pokemon";
+import UseId from "./hooksindepth/useId/UseId.jsx";
 
 const App = () => {
   return (
     <>
-      <Pokemon/>
+      <UseId/>
     </>
   );
 }
