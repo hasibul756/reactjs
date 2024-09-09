@@ -1,11 +1,12 @@
-import UseId from "./hooksindepth/useId/UseId.jsx";
+
+import DisplayContext from "./hooksindepth/customHook/DisplayContext";
 
 const App = () => {
   return (
     <>
-      <UseId/>
+      <DisplayContext />
     </>
   );
 }
 
-export default App
+export default App;
