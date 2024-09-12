@@ -1,10 +1,10 @@
 
-import DisplayContext from "./hooksindepth/customHook/DisplayContext";
+import ToggleButton from "./toggleswitch/ToggleButton";
 
 const App = () => {
   return (
     <>
-      <DisplayContext />
+      <ToggleButton />
     </>
   );
 }
