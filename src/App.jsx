@@ -1,10 +1,10 @@
 
-import ToggleButton from "./toggleswitch/ToggleButton";
+import FormComponent from "./hooksindepth/useReducer/FormComponent";
 
 const App = () => {
   return (
     <>
-      <ToggleButton />
+      <FormComponent />
     </>
   );
 }
