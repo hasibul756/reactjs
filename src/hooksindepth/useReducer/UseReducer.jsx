@@ -52,6 +52,26 @@ function reducer(state, action) {
   }
 }
 
+// Without using Switch Case
+function reducer2(state, action) {
+  // Define an object that maps action types to functions handling each action
+  const actions = {
+    increment: () => ({ count: state.count + 1 }),
+    decrement: () => ({ count: state.count - 1 }),
+    reset: () => ({ count: 0 }),
+  };
+
+  // Check if the action type exists in the actions object
+  if (actions[action.type]) {
+    // If it exists, execute the corresponding function
+    return actions[action.type]();
+  } else {
+    // If the action type is unrecognized, throw an error
+    throw new Error(`Unsupported action type: ${action.type}`);
+  }
+}
+
+
 /**
  * Component `Counter`:
  * 
