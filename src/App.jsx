@@ -1,11 +1,20 @@
-import Memo from "./hooksindepth/memo/Memo";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <div>Hello world!</div>,
+  },
+  {
+    path: "about",
+    element: <div>About Page</div>
+  }
+]);
 
 const App = () => {
   return (
-    <>
-      <Memo />
-    </>
-  );
+    <RouterProvider router={router} />
+  )
 }
 
-export default App;
+export default App
