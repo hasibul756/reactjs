@@ -1,10 +1,9 @@
-
-import FormComponent from "./hooksindepth/useReducer/FormComponent";
+import Memo from "./hooksindepth/memo/Memo";
 
 const App = () => {
   return (
     <>
-      <FormComponent />
+      <Memo />
     </>
   );
 }
