@@ -18,7 +18,7 @@ const getNavStyle = ({isActive}) => {
           It allows us to style the link differently based on whether or not the current URL matches the "to" prop.
         */}
         <NavLink 
-          exact // The "exact" prop ensures that the link is only active when the current URL exactly matches the "to" prop. 
+          // exact // The "exact" prop ensures that the link is only active when the current URL exactly matches the "to" prop. 
                 // Without "exact", this link would also be active for subroutes, e.g., "/about" would also match "/" because 
                 // the beginning of "/about" includes "/".
           className={({ isActive })=> 
@@ -42,7 +42,7 @@ const getNavStyle = ({isActive}) => {
           About
         </NavLink>
         <NavLink to="/services" style={getNavStyle}>
-          Setting
+          Services
         </NavLink>
       </nav>
     </header>

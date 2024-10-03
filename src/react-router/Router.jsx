@@ -2,6 +2,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AppLayout from "./components/layouts/AppLayout";
 import ErrorPage from "./pages/ErrorPage";
+import UserInfo from "./pages/UserInfo";
 
 // Create a router configuration using createBrowserRouter
 const router = createBrowserRouter([
@@ -19,6 +20,14 @@ const router = createBrowserRouter([
       {
         path: "movie",
         element: <div>Movie Page</div>
+      },
+      {
+        path: "user",
+        element: <div>User Page</div>
+      },
+      {
+        path: "user/:user_id",
+        element: <UserInfo/>
       },
       {
         path: "services",
