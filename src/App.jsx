@@ -1,11 +1,10 @@
 import Router from "./react-router/Router";
-// import GetAPIData from './api/GetAPIData';
+import Api from "./practise/Api"
 
 
 const App = () => {
   return (
     <Router/>
-    // <GetAPIData/>
   )
 }
 

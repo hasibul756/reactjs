@@ -34,12 +34,12 @@ const getNavStyle = ({isActive}) => {
           This does not have the "exact" prop, meaning it will be active as long as the current URL includes "/about".
         */}
         <NavLink 
-          to="/about"
+          to="/users"
           style={({ isActive }) => ({
             color: isActive ? 'red' : 'black'  // Using Inline Style
           })}
         >
-          About
+          Users
         </NavLink>
         <NavLink to="/services" style={getNavStyle}>
           Services
