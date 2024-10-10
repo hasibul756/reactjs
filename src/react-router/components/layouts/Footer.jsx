@@ -2,10 +2,9 @@ import { NavLink } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 py-4">
+    <footer className="bg-gray-100 p-4">
       <nav className="container mx-auto flex space-x-6 justify-center">
         <NavLink
-          exact
           className={({ isActive }) =>
             isActive ? "text-blue-500" : "text-gray-600 hover:text-blue-500"
           }
@@ -25,9 +24,9 @@ const Footer = () => {
           className={({ isActive }) =>
             isActive ? "text-blue-500" : "text-gray-600 hover:text-blue-500"
           }
-          to="/services"
+          to="/contact"
         >
-          Services
+          Contact
         </NavLink>
       </nav>
       <div className="text-center text-gray-500 mt-4">

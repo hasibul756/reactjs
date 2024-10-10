@@ -1,5 +1,5 @@
 import Router from "./react-router/Router";
-import Api from "./practise/Api"
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 
 const App = () => {

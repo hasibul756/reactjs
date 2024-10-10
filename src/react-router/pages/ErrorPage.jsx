@@ -51,14 +51,6 @@ const ErrorPage = () => {
                 >
                     Go to Home
                 </button>
-
-                {/* Button to navigate to a support page */}
-                <button 
-                    className="text-white bg-green-500 px-4 py-2 rounded hover:bg-green-600"
-                    onClick={handleServicesNavigate}
-                >
-                    Services
-                </button>
             </div>
 
             {/* Example of a NavLink to provide another navigation option */}

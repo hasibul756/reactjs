@@ -10,7 +10,7 @@ const getNavStyle = ({isActive}) => {
 }
 
   return (
-    <header className="bg-gray-100 py-4">
+    <header className="bg-gray-100 p-4">
       {/* Navigation bar container with some styling */}
       <nav className="container mx-auto flex space-x-6">
         {/* 
@@ -41,8 +41,8 @@ const getNavStyle = ({isActive}) => {
         >
           Users
         </NavLink>
-        <NavLink to="/services" style={getNavStyle}>
-          Services
+        <NavLink to="/contact" style={getNavStyle}>
+          Contact
         </NavLink>
       </nav>
     </header>

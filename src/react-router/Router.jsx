@@ -4,6 +4,8 @@ import AppLayout from "./components/layouts/AppLayout";
 import ErrorPage from "./pages/ErrorPage";
 import UserCard from "./pages/UserCard";
 import Users from "./pages/Users";
+import MyForm, { contactData } from "./pages/MyForm";
+import Pixabay from "../axios/pages/Pixabay";
 
 // Create a router configuration using createBrowserRouter
 const router = createBrowserRouter([
@@ -14,6 +16,10 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage/>,
     // Define child routes under the root path
     children: [
+      {
+        index: true,
+        element: <Pixabay/>
+      },
       {
         path: "about",
         element: <div>About Page</div>
@@ -36,7 +42,8 @@ const router = createBrowserRouter([
       },
       {
         path: "contact",
-        element: <div>Contact</div>
+        element: <MyForm/>,
+        action: contactData
       }
     ]
   },
