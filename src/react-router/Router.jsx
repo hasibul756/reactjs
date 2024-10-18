@@ -5,7 +5,7 @@ import ErrorPage from "./pages/ErrorPage";
 import UserCard from "./pages/UserCard";
 import Users from "./pages/Users";
 import MyForm, { contactData } from "./pages/MyForm";
-import Pixabay from "../axios/pages/Pixabay";
+import CrudView from "../axios/CrudView";
 
 // Create a router configuration using createBrowserRouter
 const router = createBrowserRouter([
@@ -18,7 +18,8 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Pixabay/>
+        // element: <Pixabay/>
+        element: <CrudView/>
       },
       {
         path: "about",
