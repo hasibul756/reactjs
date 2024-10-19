@@ -1,13 +1,23 @@
-import { useState } from "react";
-import { createPost } from "../api/postApi";
+import { useEffect, useState } from "react";
+import { createPost, updatePost } from "../api/postApi";
 
-const PostCreate = ({ posts, setPosts }) => {
+const PostCreate = ({ posts, setPosts, updatPost, setUpdatePost }) => {
   const initialData = { title: "", body: "" };
   const [data, setData] = useState(initialData);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
 
+  // If updatPost exists, populate the form with the post's data
+  useEffect(() => {
+    if (updatPost) {
+      setData({
+        title: updatPost.title || "",
+        body: updatPost.body || ""
+      });
+    }
+  }, [updatPost]);
+  
   const handleFormData = (e) => {
     const { name, value } = e.target;
     setData((prevData) => ({ ...prevData, [name]: value }));

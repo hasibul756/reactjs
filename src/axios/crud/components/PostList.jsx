@@ -4,6 +4,7 @@ import PostCreate from "./PostCreate";
 
 const PostList = () => {
   const [posts, setPosts] = useState([]);
+  const [updatPost,setUpdatePost] = useState({});
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -18,9 +19,10 @@ const PostList = () => {
     fetchPosts();
   }, []);
 
-  const handleEdit = (id) => {
-    console.log(`Edit post with ID: ${id}`);
-  };
+  const handleUpdate = (post) => {
+    setUpdatePost(post);
+    console.log('clicked', post);
+  };  
 
   const handleDelete = async (id) => {
     const confirmed = window.confirm("Are you sure you want to delete this post?");
@@ -37,7 +39,7 @@ const PostList = () => {
 
   return (
     <div className="container mx-auto p-6">
-      <PostCreate posts={posts} setPosts={setPosts}/>
+      <PostCreate posts={posts} setPosts={setPosts} updatPost={updatPost} setUpdatePost={setUpdatePost} />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {posts && posts.length > 0 ? (
           posts.map((post) => (
@@ -56,14 +58,14 @@ const PostList = () => {
                 <button
                   type="button"
                   className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300"
-                  onClick={() => handleEdit(post.id)}
+                  onClick={() => handleUpdate(post)}
                 >
                   Edit
                 </button>
                 <button
                   type="button"
                   className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300"
-                  onClick={() => handleDelete(post.id)}
+                  onClick={() => handleDelete(post)}
                 >
                   Delete
                 </button>
