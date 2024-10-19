@@ -4,6 +4,7 @@ import connectDB from './config/db.js';
 import errorHandler from './utils/errorHandler.js';
 import userRoutes from './routes/userRoutes.js';  // Existing user routes
 import postRoutes from './routes/postRoutes.js';  // Import post routes
+import contactRoutes from './routes/contactRoutes.js';
 
 const app = express();
 
@@ -17,8 +18,9 @@ app.use(express.json());
 app.use(cors()); // Use CORS middleware
 
 // Define Routes
-app.use('/api/users', userRoutes);  // Routes for user-related actions
-app.use('/api/posts', postRoutes);  // Routes for post-related actions
+app.use('/api/users', userRoutes);
+app.use('/api/posts', postRoutes);
+app.use('/api/contacts', contactRoutes);
 
 // Global Error Handler Middleware
 app.use(errorHandler);

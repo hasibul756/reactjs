@@ -1,37 +1,38 @@
 import { useEffect, useState } from "react";
 import { createPost, updatePost } from "../api/postApi";
 
-const PostCreate = ({ posts, setPosts, updatPost, setUpdatePost }) => {
-  const initialData = { title: "", body: "" };
-  const [data, setData] = useState(initialData);
+const PostForm = ({ posts, setPosts, postToUpdate, setPostToUpdate }) => {
+  const initialFormData = { title: "", body: "" };
+  const [formData, setFormData] = useState(initialFormData);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
 
-  // If updatPost exists, populate the form with the post's data
+  const isNewPost = Object.keys(postToUpdate || {}).length === 0;
+
   useEffect(() => {
-    if (updatPost) {
-      setData({
-        title: updatPost.title || "",
-        body: updatPost.body || ""
+    if (postToUpdate) {
+      setFormData({
+        title: postToUpdate.title || "",
+        body: postToUpdate.body || ""
       });
     }
-  }, [updatPost]);
-  
-  const handleFormData = (e) => {
+  }, [postToUpdate]);
+
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setData((prevData) => ({ ...prevData, [name]: value }));
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const validateForm = () => {
-    if (data.title.length < 1) return "Title must be at least 1 characters long.";
-    if (data.body.length < 1) return "Body must be at least 1 characters long.";
+  const validateInput = () => {
+    if (formData.title.length < 1) return "Title must be at least 1 character long.";
+    if (formData.body.length < 2) return "Body must be at least 2 character long.";
     return null;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const validationError = validateForm();
+    const validationError = validateInput();
     if (validationError) {
       setError(validationError);
       return;
@@ -42,15 +43,23 @@ const PostCreate = ({ posts, setPosts, updatPost, setUpdatePost }) => {
     setSuccess(null);
 
     try {
-      const response = await createPost(data);
-      setPosts([...posts, response]);
-      console.log(response.data);
-      setData(initialData); // Reset form after successful submission
-      setSuccess("Post created successfully!");
+      if (isNewPost) {
+        // Create new post
+        const response = await createPost(formData);
+        setPosts([...posts, response]);
+        setSuccess("Post created successfully!");
+      } else {
+        // Update existing post
+        const response = await updatePost(postToUpdate.id, formData);
+        setPosts(posts.map((post) => (post.id === postToUpdate.id ? response : post)));
+        setSuccess("Post updated successfully!");
+        setPostToUpdate(null); // Reset after updating
+      }
+      setFormData(initialFormData); // Reset form
     } catch (err) {
-      const errorMsg = err.response?.data?.message || "Failed to create post. Please try again.";
+      const errorMsg = err.response?.data?.message || "Failed to submit post. Please try again.";
       setError(errorMsg);
-      console.error("Error creating post:", err);
+      console.error("Error submitting post:", err);
     } finally {
       setLoading(false);
     }
@@ -58,14 +67,16 @@ const PostCreate = ({ posts, setPosts, updatPost, setUpdatePost }) => {
 
   return (
     <div className="max-w-lg mx-auto p-6">
-      <h1 className="text-2xl font-semibold text-center mb-6">Create New Post</h1>
-      
+      <h1 className="text-2xl font-semibold text-center mb-6">
+        {isNewPost ? "Create New Post" : "Edit Post"}
+      </h1>
+
       {/* Success Message */}
       {success && <p className="text-green-500 text-center mb-4">{success}</p>}
-      
+
       {/* Error Message */}
       {error && <p className="text-red-500 text-center mb-4">{error}</p>}
-      
+
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <input
@@ -73,8 +84,8 @@ const PostCreate = ({ posts, setPosts, updatPost, setUpdatePost }) => {
             id="title"
             name="title"
             placeholder="Post title"
-            value={data.title}
-            onChange={handleFormData}
+            value={formData.title}
+            onChange={handleInputChange}
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             aria-label="Post Title"
             required
@@ -85,8 +96,8 @@ const PostCreate = ({ posts, setPosts, updatPost, setUpdatePost }) => {
             id="body"
             name="body"
             placeholder="Post body"
-            value={data.body}
-            onChange={handleFormData}
+            value={formData.body}
+            onChange={handleInputChange}
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             aria-label="Post Body"
             rows="4"
@@ -100,11 +111,11 @@ const PostCreate = ({ posts, setPosts, updatPost, setUpdatePost }) => {
           }`}
           disabled={loading}
         >
-          {loading ? "Submitting..." : "Submit"}
+          {loading ? "Submitting..." : isNewPost ? "Add Post" : "Edit Post"}
         </button>
       </form>
     </div>
   );
 };
 
-export default PostCreate;
+export default PostForm;
