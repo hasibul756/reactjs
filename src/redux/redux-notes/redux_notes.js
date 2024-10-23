@@ -176,7 +176,7 @@ export default store;
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'; // Import Provider to connect Redux to React
-import store from './store'; // Import the store from the previous step
+import store from '../store'; // Import the store from the previous step
 import Counter from './Counter'; // Import the Counter component
 
 function App() {
@@ -201,7 +201,7 @@ ReactDOM.render(
 
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement } from './store'; // Import the actions from the slice
+import { increment, decrement } from '../store'; // Import the actions from the slice
 
 function Counter() {
   const count = useSelector((state) => state.counter.count); // Get count from Redux store

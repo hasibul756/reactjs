@@ -1,13 +1,18 @@
 // import Router from "./react-router/Router";
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import Accordion from './accordion/Accordion';
-import './accordion/accordionStyle.css';
+// import NavComponent from './navbar/NavComponent';
+import './navbar/navbar.css';
+
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
+import NoteApp from './redux/features/noteapp/NoteApp';
 
 
 const App = () => {
   return (
-    // <Router/>
-    <Accordion/>
+    <Provider store={store}>
+      <NoteApp/>
+    </Provider>
   )
 }
 

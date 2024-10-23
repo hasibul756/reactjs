@@ -1,0 +1,154 @@
+/* Reset common default browser styles */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 100%;
+}
+
+body {
+    line-height: 1.6;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Responsive image and media elements */
+img, video {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Links */
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+    color: #007BFF;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+/* Lists */
+ul, ol {
+    list-style: none;
+    padding-left: 0;
+}
+
+/* Basic container for layout */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Navbar CSS Start */
+
+.navbar {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem 0;
+    position: relative;
+}
+
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-toggle {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+}
+
+.navbar-list {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar-item {
+    text-transform: uppercase;
+}
+
+.navbar-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.navbar-link:hover {
+    color: #ff6347;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .navbar-toggle {
+        display: block;
+    }
+
+    .navbar-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        flex-direction: column;
+        display: none;
+    }
+
+    .navbar-menu.open {
+        display: flex;
+    }
+
+    .navbar-list {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .navbar-item {
+        padding: 1rem 0;
+        border-bottom: 1px solid #444;
+        text-align: center;
+    }
+}

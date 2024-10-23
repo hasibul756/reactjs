@@ -4,7 +4,7 @@ import Faq from './Faq';
 
 const Accordion = () => {
     const [data, setData] = useState([]);
-    const [activeId, setActiveID] = useState(null); // null is more semantically correct than `false` for id
+    const [activeId, setActiveID] = useState(null);
 
     useEffect(() => {
         setData(faqData);
